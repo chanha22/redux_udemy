@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectBook } from '../actions/index';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
+
 class BookList extends Component {
   renderList(){
     return this.props.books.map((book) => {
@@ -9,21 +10,21 @@ class BookList extends Component {
         <li
           key={book.title}
           onClick={() => this.props.selectBook(book) }
-          className="list-group-item">
+          className="list-group-item"
+        >
           {book.title}
         </li>
 
-      )
-    })
+      );
+    });
   }
 
   render(){
-    console.log(this.props.asdf) //->'123' 출력
     return(
       <ul className="list-group col-sm-4">
         {this.renderList()}
       </ul>
-    )
+    );
   }
 }
 
@@ -41,7 +42,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   //Whenever selectBookd is called, the result should be passed
   //to all of our reducers
-  return bindActionCreators({selectBook: selectBook}, dispatch)
+  return bindActionCreators({selectBook: selectBook}, dispatch);
 }
 
 //Prompt BookList from a component to a container - It needs to know
